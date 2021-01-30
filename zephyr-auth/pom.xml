@@ -8,7 +8,7 @@
         <version>0.0.1-SNAPSHOT</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
-    <artifactId>zephyr-gateway</artifactId>
+    <artifactId>zephyr-auth</artifactId>
 
     <properties>
         <zephyr.version>0.0.1-SNAPSHOT</zephyr.version>
@@ -21,7 +21,6 @@
             <version>${zephyr.version}</version>
         </dependency>
     </dependencies>
-
 
     <build>
         <plugins>
@@ -39,4 +38,5 @@
             </plugin>
         </plugins>
     </build>
+
 </project>

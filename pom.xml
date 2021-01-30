@@ -5,6 +5,7 @@
 	<modules>
 		<module>zephyr-commons</module>
 		<module>zephyr-gateway</module>
+		<module>zephyr-auth</module>
 	</modules>
 	<parent>
 		<groupId>org.springframework.boot</groupId>
