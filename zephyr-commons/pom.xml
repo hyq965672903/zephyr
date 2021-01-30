@@ -11,6 +11,22 @@
 
     <artifactId>zephyr-commons</artifactId>
     <packaging>pom</packaging>
+    <modules>
+        <module>common-core</module>
+    </modules>
+    <properties>
+        <zephyr.version>0.0.1-SNAPSHOT</zephyr.version>
+    </properties>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>cn.hyqup</groupId>
+                <artifactId>common-core</artifactId>
+                <version>${zephyr.version}</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
 
 
 </project>
