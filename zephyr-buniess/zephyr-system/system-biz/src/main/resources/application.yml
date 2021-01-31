@@ -1,8 +1,8 @@
 server:
-  port: 10010
+  port: 10020
 spring:
   application:
-    name: zephyr-auth
+    name: zephyr-system
   cloud:
     nacos:
       discovery:

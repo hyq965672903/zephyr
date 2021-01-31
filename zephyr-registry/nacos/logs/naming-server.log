@@ -1,27 +1,36 @@
-2021-01-30 19:44:37,376 INFO GlobalConfig{taskDispatchPeriod=2000, batchSyncKeyCount=1000, syncRetryDelay=5000, dataWarmup=false, expireInstance=true, loadDataRetryDelayMillis=30000}
+2021-01-31 11:34:24,577 INFO GlobalConfig{taskDispatchPeriod=2000, batchSyncKeyCount=1000, syncRetryDelay=5000, dataWarmup=false, expireInstance=true, loadDataRetryDelayMillis=30000}
 
-2021-01-30 19:44:38,464 INFO open empty service auto clean job, initialDelay : 50000 ms, period : 30000 ms
+2021-01-31 11:34:25,272 INFO open empty service auto clean job, initialDelay : 50000 ms, period : 30000 ms
 
-2021-01-30 19:44:38,466 INFO listen for service meta change
+2021-01-31 11:34:25,273 INFO listen for service meta change
 
-2021-01-30 19:44:42,334 INFO [NACOS-DISTRO] healthy server list changed, old: [192.168.0.6:8848], new: [192.168.0.6:8848]
+2021-01-31 11:34:29,554 INFO [NACOS-DISTRO] healthy server list changed, old: [192.168.0.6:8848], new: [192.168.0.6:8848]
 
-2021-01-30 19:50:06,022 WARN [NamingServerHttpClientManager] Start destroying HTTP-Client
+2021-01-31 11:54:50,619 INFO creating empty service public:DEFAULT_GROUP@@zephyr-auth
 
-2021-01-30 19:50:06,061 WARN [NamingServerHttpClientManager] Destruction of the end
+2021-01-31 11:54:50,938 INFO [NEW-SERVICE] {"name":"DEFAULT_GROUP@@zephyr-auth","protectThreshold":0.0,"groupName":"DEFAULT_GROUP","metadata":{},"finalizeCount":0,"owners":[],"resetWeight":false,"enabled":true,"selector":{"type":"none"},"namespaceId":"public","ipDeleteTimeout":30000,"lastModifiedMillis":1612065290622,"checksum":"2c1a6cd684a42b02b50e72163da5f5aa","clusterMap":{},"empty":true}
 
-2021-01-30 19:50:14,540 ERROR [HEALTH-CHECK] error while processing NIO task
+2021-01-31 11:54:50,946 WARN cluster: DEFAULT not found, ip: {"instanceId":"192.168.0.6#10010#DEFAULT#DEFAULT_GROUP@@zephyr-auth","ip":"192.168.0.6","port":10010,"weight":1.0,"healthy":true,"enabled":true,"ephemeral":true,"clusterName":"DEFAULT","serviceName":"DEFAULT_GROUP@@zephyr-auth","metadata":{"preserved.register.source":"SPRING_CLOUD"},"lastBeat":1612065290600,"marked":false,"app":"unknown","instanceHeartBeatInterval":5000,"instanceHeartBeatTimeOut":15000,"ipDeleteTimeout":30000}, will create new cluster with default configuration.
 
-java.lang.InterruptedException: null
-	at java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.reportInterruptAfterWait(AbstractQueuedSynchronizer.java:2014)
-	at java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.awaitNanos(AbstractQueuedSynchronizer.java:2088)
-	at java.util.concurrent.LinkedBlockingQueue.poll(LinkedBlockingQueue.java:467)
-	at com.alibaba.nacos.naming.healthcheck.TcpSuperSenseProcessor.processTask(TcpSuperSenseProcessor.java:137)
-	at com.alibaba.nacos.naming.healthcheck.TcpSuperSenseProcessor.run(TcpSuperSenseProcessor.java:154)
-	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)
-	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
-	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.access$201(ScheduledThreadPoolExecutor.java:180)
-	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:293)
-	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
-	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
-	at java.lang.Thread.run(Thread.java:748)
+2021-01-31 11:54:50,958 INFO [NACOS-RAFT] datum is changed, key: com.alibaba.nacos.naming.iplist.ephemeral.public##DEFAULT_GROUP@@zephyr-auth, value: {"instanceList":[{"instanceId":"192.168.0.6#10010#DEFAULT#DEFAULT_GROUP@@zephyr-auth","ip":"192.168.0.6","port":10010,"weight":1.0,"healthy":true,"enabled":true,"ephemeral":true,"clusterName":"DEFAULT","serviceName":"DEFAULT_GROUP@@zephyr-auth","metadata":{"preserved.register.source":"SPRING_CLOUD"},"lastBeat":1612065290600,"marked":false,"app":"unknown","instanceHeartBeatInterval":5000,"instanceHeartBeatTimeOut":15000,"ipDeleteTimeout":30000}]}
+
+2021-01-31 12:14:33,352 INFO creating empty service public:DEFAULT_GROUP@@system-biz
+
+2021-01-31 12:14:33,353 INFO [NEW-SERVICE] {"name":"DEFAULT_GROUP@@system-biz","protectThreshold":0.0,"groupName":"DEFAULT_GROUP","metadata":{},"finalizeCount":0,"owners":[],"resetWeight":false,"enabled":true,"selector":{"type":"none"},"namespaceId":"public","ipDeleteTimeout":30000,"lastModifiedMillis":1612066473352,"checksum":"9014b5b4643683611532c3c819cd6458","clusterMap":{},"empty":true}
+
+2021-01-31 12:14:33,353 WARN cluster: DEFAULT not found, ip: {"instanceId":"192.168.0.6#10020#DEFAULT#DEFAULT_GROUP@@system-biz","ip":"192.168.0.6","port":10020,"weight":1.0,"healthy":true,"enabled":true,"ephemeral":true,"clusterName":"DEFAULT","serviceName":"DEFAULT_GROUP@@system-biz","metadata":{"preserved.register.source":"SPRING_CLOUD"},"lastBeat":1612066473352,"marked":false,"app":"unknown","instanceHeartBeatInterval":5000,"instanceHeartBeatTimeOut":15000,"ipDeleteTimeout":30000}, will create new cluster with default configuration.
+
+2021-01-31 12:14:33,353 INFO [NACOS-RAFT] datum is changed, key: com.alibaba.nacos.naming.iplist.ephemeral.public##DEFAULT_GROUP@@system-biz, value: {"instanceList":[{"instanceId":"192.168.0.6#10020#DEFAULT#DEFAULT_GROUP@@system-biz","ip":"192.168.0.6","port":10020,"weight":1.0,"healthy":true,"enabled":true,"ephemeral":true,"clusterName":"DEFAULT","serviceName":"DEFAULT_GROUP@@system-biz","metadata":{"preserved.register.source":"SPRING_CLOUD"},"lastBeat":1612066473352,"marked":false,"app":"unknown","instanceHeartBeatInterval":5000,"instanceHeartBeatTimeOut":15000,"ipDeleteTimeout":30000}]}
+
+2021-01-31 12:17:17,166 INFO [NACOS-RAFT] datum is changed, key: com.alibaba.nacos.naming.iplist.ephemeral.public##DEFAULT_GROUP@@zephyr-auth, value: {"instanceList":[]}
+
+2021-01-31 12:17:46,286 INFO [NACOS-RAFT] datum is changed, key: com.alibaba.nacos.naming.iplist.ephemeral.public##DEFAULT_GROUP@@zephyr-auth, value: {"instanceList":[{"instanceId":"192.168.0.6#10010#DEFAULT#DEFAULT_GROUP@@zephyr-auth","ip":"192.168.0.6","port":10010,"weight":1.0,"healthy":true,"enabled":true,"ephemeral":true,"clusterName":"DEFAULT","serviceName":"DEFAULT_GROUP@@zephyr-auth","metadata":{"preserved.register.source":"SPRING_CLOUD"},"lastBeat":1612066666286,"marked":false,"app":"unknown","instanceHeartBeatInterval":5000,"instanceHeartBeatTimeOut":15000,"ipDeleteTimeout":30000}]}
+
+2021-01-31 12:23:03,153 INFO [NACOS-RAFT] datum is changed, key: com.alibaba.nacos.naming.iplist.ephemeral.public##DEFAULT_GROUP@@zephyr-auth, value: {"instanceList":[]}
+
+2021-01-31 12:23:03,272 WARN remove instance from non-exist service: DEFAULT_GROUP@@zephyr-system
+
+2021-01-31 12:23:38,495 INFO [AUTO-DELETE-IP] service: DEFAULT_GROUP@@system-biz, ip: {"instanceId":"192.168.0.6#10020#DEFAULT#DEFAULT_GROUP@@system-biz","ip":"192.168.0.6","port":10020,"weight":1.0,"healthy":false,"enabled":true,"ephemeral":true,"clusterName":"DEFAULT","serviceName":"DEFAULT_GROUP@@system-biz","metadata":{"preserved.register.source":"SPRING_CLOUD"},"lastBeat":1612066983747,"marked":false,"app":"unknown","instanceHeartBeatInterval":5000,"instanceHeartBeatTimeOut":15000,"ipDeleteTimeout":30000}
+
+2021-01-31 12:23:38,600 INFO [NACOS-RAFT] datum is changed, key: com.alibaba.nacos.naming.iplist.ephemeral.public##DEFAULT_GROUP@@system-biz, value: {"instanceList":[]}
+

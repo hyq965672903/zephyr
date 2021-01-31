@@ -1,2 +1,26 @@
-2021-01-30 19:50:11,536 ERROR [UPDATE-DOMAIN] Exception while taking item from LinkedBlockingDeque.
+2021-01-31 11:54:50,961 INFO DEFAULT_GROUP@@zephyr-auth {SYNC} {IP-NEW} cluster: DEFAULT, new ips size: 1, content: [192.168.0.6:10010:unknown:DEFAULT_1.0_true_false_DEFAULT]
+
+2021-01-31 11:54:50,966 INFO [IP-UPDATED] namespace: public, service: DEFAULT_GROUP@@zephyr-auth, ips: 192.168.0.6:10010_true,
+
+2021-01-31 12:14:33,353 INFO DEFAULT_GROUP@@system-biz {SYNC} {IP-NEW} cluster: DEFAULT, new ips size: 1, content: [192.168.0.6:10020:unknown:DEFAULT_1.0_true_false_DEFAULT]
+
+2021-01-31 12:14:33,353 INFO [IP-UPDATED] namespace: public, service: DEFAULT_GROUP@@system-biz, ips: 192.168.0.6:10020_true,
+
+2021-01-31 12:17:17,166 INFO DEFAULT_GROUP@@zephyr-auth {SYNC} {IP-DEAD} cluster: DEFAULT, dead ips size: 1, content: [192.168.0.6:10010:unknown:DEFAULT_1.0_true_false_DEFAULT]
+
+2021-01-31 12:17:17,167 INFO [IP-UPDATED] namespace: public, service: DEFAULT_GROUP@@zephyr-auth, ips: 
+
+2021-01-31 12:17:46,286 INFO DEFAULT_GROUP@@zephyr-auth {SYNC} {IP-NEW} cluster: DEFAULT, new ips size: 1, content: [192.168.0.6:10010:unknown:DEFAULT_1.0_true_false_DEFAULT]
+
+2021-01-31 12:17:46,287 INFO [IP-UPDATED] namespace: public, service: DEFAULT_GROUP@@zephyr-auth, ips: 192.168.0.6:10010_true,
+
+2021-01-31 12:23:03,153 INFO DEFAULT_GROUP@@zephyr-auth {SYNC} {IP-DEAD} cluster: DEFAULT, dead ips size: 1, content: [192.168.0.6:10010:unknown:DEFAULT_1.0_true_false_DEFAULT]
+
+2021-01-31 12:23:03,153 INFO [IP-UPDATED] namespace: public, service: DEFAULT_GROUP@@zephyr-auth, ips: 
+
+2021-01-31 12:23:23,489 INFO {POS} {IP-DISABLED} valid: 192.168.0.6:10020@DEFAULT@DEFAULT_GROUP@@system-biz, region: unknown, msg: client timeout after 15000, last beat: 1612066983747
+
+2021-01-31 12:23:38,600 INFO DEFAULT_GROUP@@system-biz {SYNC} {IP-DEAD} cluster: DEFAULT, dead ips size: 1, content: [192.168.0.6:10020:unknown:DEFAULT_1.0_false_false_DEFAULT]
+
+2021-01-31 12:23:38,601 INFO [IP-UPDATED] namespace: public, service: DEFAULT_GROUP@@system-biz, ips: 
 
