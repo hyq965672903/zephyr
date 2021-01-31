@@ -5,3 +5,9 @@ The zephyr is a symbol of hope in spring
  
  默认端口8848  默认用户名:nacos  密码:nacos 
 ## 端口说明
+## 优秀开源推荐
+- zlt-microservices-platform https://gitee.com/zlt2000/microservices-platform.git
+- Pro-Cloud https://gitee.com/gitsc/pro-cloud.git 
+- Cloud-Platform https://gitee.com/geek_qi/cloud-platform.git
+- wisdom-education  https://gitee.com/zhuimengshaonian/wisdom-education.git
+- youlai-mall https://github.com/hxrui/youlai-mall.git

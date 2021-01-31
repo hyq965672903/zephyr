@@ -6,6 +6,7 @@
 		<module>zephyr-commons</module>
 		<module>zephyr-gateway</module>
 		<module>zephyr-auth</module>
+		<module>zephyr-buniess</module>
 	</modules>
 	<parent>
 		<groupId>org.springframework.boot</groupId>
