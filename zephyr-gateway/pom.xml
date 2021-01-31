@@ -10,16 +10,18 @@
     <modelVersion>4.0.0</modelVersion>
     <artifactId>zephyr-gateway</artifactId>
 
-    <properties>
-        <zephyr.version>0.0.1-SNAPSHOT</zephyr.version>
-    </properties>
 
     <dependencies>
         <dependency>
-            <groupId>cn.hyqup</groupId>
-            <artifactId>common-core</artifactId>
-            <version>${zephyr.version}</version>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-gateway</artifactId>
         </dependency>
+        <dependency>
+            <groupId>com.alibaba.cloud</groupId>
+            <artifactId>spring-cloud-starter-alibaba-nacos-discovery</artifactId>
+        </dependency>
+
+
     </dependencies>
 
 
