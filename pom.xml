@@ -7,7 +7,8 @@
 		<module>zephyr-gateway</module>
 		<module>zephyr-auth</module>
 		<module>zephyr-buniess</module>
-	</modules>
+        <module>zephyr-gen</module>
+    </modules>
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
