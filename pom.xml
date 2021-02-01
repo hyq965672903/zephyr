@@ -8,12 +8,7 @@
 		<module>zephyr-auth</module>
 		<module>zephyr-buniess</module>
         <module>zephyr-gen</module>
-		<module>zephyr-buniess/zephyr-admin/admin-api</module>
-		<module>admin-biz</module>
-		<module>zephyr-buniess/zephyr-admin/admin-biz</module>
-		<module>zephyr-buniess/zephyr-system</module>
-		<module>zephyr-buniess/zephyr-system/system-api</module>
-		<module>zephyr-buniess/zephyr-system/system-biz</module>
+        <module>zephyr-api</module>
 	</modules>
 	<parent>
 		<groupId>org.springframework.boot</groupId>

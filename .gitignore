@@ -4,3 +4,8 @@ target/
 
 .idea
 *.iml
+
+log
+*.log
+logs
+!**/nacos/target

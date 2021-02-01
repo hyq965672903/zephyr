@@ -6,11 +6,20 @@
         <artifactId>zephyr</artifactId>
         <groupId>cn.hyqup</groupId>
         <version>0.0.1-SNAPSHOT</version>
-        <relativePath>../../../pom.xml</relativePath>
     </parent>
+    <packaging>pom</packaging>
+    <modules>
+        <module>sys-api</module>
+    </modules>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>system-api</artifactId>
+    <artifactId>zephyr-api</artifactId>
 
+    <dependencies>
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-openfeign</artifactId>
+        </dependency>
+    </dependencies>
 
 </project>

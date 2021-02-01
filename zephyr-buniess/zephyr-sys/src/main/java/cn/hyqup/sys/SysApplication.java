@@ -1,7 +1,9 @@
-package cn.hyqup.system;
+package cn.hyqup.sys;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
+import org.springframework.cloud.openfeign.EnableFeignClients;
 
 /**
  * Copyright © 2021灼华. All rights reserved.
@@ -11,9 +13,11 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * @date 2021/1/31
  * @description:
  */
+@EnableFeignClients(basePackages={"cn.hyqup"})
+@EnableDiscoveryClient
 @SpringBootApplication
-public class SystemApplication {
+public class SysApplication {
     public static void main(String[] args) {
-        SpringApplication.run(SystemApplication.class);
+        SpringApplication.run(SysApplication.class);
     }
 }
