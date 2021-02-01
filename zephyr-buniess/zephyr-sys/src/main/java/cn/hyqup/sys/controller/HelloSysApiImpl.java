@@ -1,10 +1,8 @@
-package cn.hyqup.auth.controller;
+package cn.hyqup.sys.controller;
 
-import cn.hyqup.sys.api.HelloApi;
+import cn.hyqup.sys.api.HelloSysApi;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
-
-import javax.annotation.Resource;
 
 /**
  * Copyright © 2021灼华. All rights reserved.
@@ -15,12 +13,9 @@ import javax.annotation.Resource;
  * @description:
  */
 @RestController
-public class FeginTestController {
-    @Resource
-    HelloApi helloApi;
-
-    @GetMapping("/testFeign")
-    public String testFeign() {
-        return helloApi.sayHello();
+public class HelloSysApiImpl implements HelloSysApi {
+    @Override
+    public String saySysHello() {
+        return "hello saySysHello";
     }
 }

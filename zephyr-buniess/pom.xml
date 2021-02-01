@@ -12,6 +12,7 @@
     <packaging>pom</packaging>
     <modules>
         <module>zephyr-sys</module>
+        <module>zephyr-mall</module>
     </modules>
 
 

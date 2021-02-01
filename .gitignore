@@ -7,5 +7,7 @@ target/
 
 log
 *.log
+*.ctrl
+*.dat
 logs
 !**/nacos/target

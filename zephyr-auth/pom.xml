@@ -25,11 +25,6 @@
             <artifactId>common-core</artifactId>
             <version>${zephyr.version}</version>
         </dependency>
-        <dependency>
-            <groupId>cn.hyqup</groupId>
-            <artifactId>system-api</artifactId>
-            <version>${zephyr.version}</version>
-        </dependency>
     </dependencies>
 
     <build>

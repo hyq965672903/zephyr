@@ -1,0 +1,10 @@
+server:
+  port: 10030
+spring:
+  application:
+    name: zephyr-mall
+  cloud:
+    nacos:
+      discovery:
+        server-addr: http://localhost:8848
+
