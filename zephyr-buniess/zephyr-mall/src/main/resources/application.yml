@@ -8,3 +8,6 @@ spring:
       discovery:
         server-addr: http://localhost:8848
 
+logging:
+  level:
+    cn.hyqup.mall.api.HelloMallApi: DEBUG

@@ -13,6 +13,7 @@
     <packaging>pom</packaging>
     <modules>
         <module>common-core</module>
+        <module>zephyr-feign-spring-boot-stater</module>
     </modules>
     <properties>
         <zephyr.version>0.0.1-SNAPSHOT</zephyr.version>

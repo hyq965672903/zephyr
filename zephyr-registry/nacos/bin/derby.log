@@ -1,6 +1,6 @@
 ----------------------------------------------------------------
-Mon Feb 01 23:45:13 CST 2021:
-Booting Derby version The Apache Software Foundation - Apache Derby - 10.14.2.0 - (1828579): instance a816c00e-0177-5e44-f19b-000014361aa8 
+Tue Feb 02 15:13:00 CST 2021:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.14.2.0 - (1828579): instance a816c00e-0177-6196-5aef-00001461ff28 
 on database directory F:\zephyr_repo\zephyr\zephyr-registry\nacos\data\derby-data with class loader org.springframework.boot.loader.LaunchedURLClassLoader@21b8d17c 
 Loaded from jar:file:/F:/zephyr_repo/zephyr/zephyr-registry/nacos/target/nacos-server.jar!/BOOT-INF/lib/derby-10.14.2.0.jar!/
 java.vendor=Oracle Corporation

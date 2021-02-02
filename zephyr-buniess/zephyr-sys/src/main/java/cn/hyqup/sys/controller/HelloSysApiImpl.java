@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class HelloSysApiImpl implements HelloSysApi {
     @Override
     public String saySysHello() {
+//        int i= 1/0;
         return "hello saySysHello";
     }
 }

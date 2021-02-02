@@ -8,3 +8,11 @@ spring:
       discovery:
         server-addr: http://localhost:8848
 
+# Feign 日志级别
+logging:
+  level:
+    cn.hyqup.sys.api.HelloSysApi: DEBUG
+
+feign:
+  sentinel:
+    enabled: true
