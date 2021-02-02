@@ -19,7 +19,7 @@
     <dependencies>
         <dependency>
             <groupId>cn.hyqup</groupId>
-            <artifactId>zephyr-feign-spring-boot-stater</artifactId>
+            <artifactId>common-web</artifactId>
             <version>${zephyr.version}</version>
         </dependency>
         <dependency>

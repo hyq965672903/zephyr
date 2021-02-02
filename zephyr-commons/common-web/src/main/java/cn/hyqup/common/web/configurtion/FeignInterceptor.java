@@ -1,4 +1,4 @@
-package cn.hyqup.feign;
+package cn.hyqup.common.web.configurtion;
 
 import feign.RequestInterceptor;
 import feign.RequestTemplate;
