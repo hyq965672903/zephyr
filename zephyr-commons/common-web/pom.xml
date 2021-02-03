@@ -12,7 +12,12 @@
     <artifactId>common-web</artifactId>
 
     <dependencies>
-
+        <!--ribbon 客户端负载均衡        -->
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-netflix-ribbon</artifactId>
+        </dependency>
+        <!-- 服务间调用 -->
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-openfeign</artifactId>
@@ -21,9 +26,10 @@
             <groupId>io.github.openfeign</groupId>
             <artifactId>feign-okhttp</artifactId>
         </dependency>
+        <!--熔断限流降级-->
         <dependency>
-            <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-netflix-hystrix</artifactId>
+            <groupId>com.alibaba.cloud</groupId>
+            <artifactId>spring-cloud-starter-alibaba-sentinel</artifactId>
         </dependency>
     </dependencies>
 </project>

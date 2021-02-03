@@ -7,6 +7,9 @@ spring:
     nacos:
       discovery:
         server-addr: http://localhost:8848
+      config:
+        server-addr: ${spring.cloud.nacos.discovery.server-addr}
+        file-extension: yml
 
 # Feign 日志级别
 logging:

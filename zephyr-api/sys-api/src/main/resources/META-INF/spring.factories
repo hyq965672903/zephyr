@@ -1,0 +1,3 @@
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+cn.hyqup.sys.api.fallback.HelloSysApiFallbackImpl,\
+  cn.hyqup.sys.api.factory.HelloSysApiFallBackFactory
