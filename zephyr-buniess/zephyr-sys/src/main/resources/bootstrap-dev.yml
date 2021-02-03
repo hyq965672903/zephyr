@@ -10,12 +10,7 @@ spring:
       config:
         server-addr: ${spring.cloud.nacos.discovery.server-addr}
         file-extension: yml
-
-# Feign 日志级别
-logging:
-  level:
-    cn.hyqup.sys.api.HelloSysApi: DEBUG
-
+#开启sentinel 熔断
 feign:
   sentinel:
     enabled: true

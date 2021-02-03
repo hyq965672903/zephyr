@@ -1,6 +1,7 @@
 package cn.hyqup.mall.api;
 
 import cn.hyqup.common.web.configurtion.FeignConfiguration;
+import cn.hyqup.mall.api.factory.HelloMallApiFallBackFactory;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
 
@@ -12,7 +13,8 @@ import org.springframework.web.bind.annotation.GetMapping;
  * @date 2021/2/1
  * @description:
  */
-@FeignClient(name = "zephyr-mall", configuration = FeignConfiguration.class)
+@FeignClient(name = "zephyr-mall", configuration = FeignConfiguration.class,
+        fallbackFactory = HelloMallApiFallBackFactory.class)
 public interface HelloMallApi {
     @GetMapping("/sayMallHello")
     public String sayMallHello();
