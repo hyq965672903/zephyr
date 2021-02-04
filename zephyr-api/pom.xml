@@ -19,10 +19,9 @@
     <dependencies>
         <dependency>
             <groupId>cn.hyqup</groupId>
-            <artifactId>common-web</artifactId>
+            <artifactId>common-cloud</artifactId>
             <version>${zephyr.version}</version>
         </dependency>
-
     </dependencies>
 
 </project>

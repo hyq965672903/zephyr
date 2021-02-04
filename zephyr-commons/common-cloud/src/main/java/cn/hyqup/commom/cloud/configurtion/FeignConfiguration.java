@@ -1,4 +1,4 @@
-package cn.hyqup.common.web.configurtion;
+package cn.hyqup.commom.cloud.configurtion;
 
 import feign.Logger;
 import feign.RequestInterceptor;

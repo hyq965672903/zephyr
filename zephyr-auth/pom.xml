@@ -22,7 +22,7 @@
         </dependency>
         <dependency>
             <groupId>cn.hyqup</groupId>
-            <artifactId>common-core</artifactId>
+            <artifactId>common-web</artifactId>
             <version>${zephyr.version}</version>
         </dependency>
     </dependencies>

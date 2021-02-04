@@ -13,11 +13,6 @@
     <dependencies>
         <dependency>
             <groupId>cn.hyqup</groupId>
-            <artifactId>common-core</artifactId>
-            <version>${zephyr.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>cn.hyqup</groupId>
             <artifactId>mall-api</artifactId>
             <version>${zephyr.version}</version>
         </dependency>

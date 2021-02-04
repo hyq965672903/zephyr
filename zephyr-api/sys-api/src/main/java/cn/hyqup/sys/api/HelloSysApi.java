@@ -1,6 +1,6 @@
 package cn.hyqup.sys.api;
 
-import cn.hyqup.common.web.configurtion.FeignConfiguration;
+import cn.hyqup.commom.cloud.configurtion.FeignConfiguration;
 import cn.hyqup.sys.api.factory.HelloSysApiFallBackFactory;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;

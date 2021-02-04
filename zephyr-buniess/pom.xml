@@ -14,24 +14,11 @@
         <module>zephyr-sys</module>
         <module>zephyr-mall</module>
     </modules>
-
-
-
     <dependencies>
         <dependency>
             <groupId>cn.hyqup</groupId>
-            <artifactId>common-core</artifactId>
+            <artifactId>common-web</artifactId>
             <version>${zephyr.version}</version>
-        </dependency>
-
-        <!-- nacos 依赖-->
-        <dependency>
-            <groupId>com.alibaba.cloud</groupId>
-            <artifactId>spring-cloud-starter-alibaba-nacos-discovery</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>com.alibaba.cloud</groupId>
-            <artifactId>spring-cloud-starter-alibaba-nacos-config</artifactId>
         </dependency>
     </dependencies>
 
