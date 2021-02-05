@@ -9,13 +9,19 @@ package cn.hyqup.common.core.result;
  * @description:
  */
 public interface IResultCode {
+    /**
+     * 是否成功
+     *
+     * @return
+     */
+    Boolean isSuccess();
 
     /**
      * 返回状态码
      *
      * @return
      */
-    int code();
+    String code();
 
     /**
      * 状态消息描述

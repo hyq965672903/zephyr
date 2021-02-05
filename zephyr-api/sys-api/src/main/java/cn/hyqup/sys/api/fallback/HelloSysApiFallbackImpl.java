@@ -1,6 +1,8 @@
 package cn.hyqup.sys.api.fallback;
 
+import cn.hyqup.common.core.result.Result;
 import cn.hyqup.sys.api.HelloSysApi;
+import cn.hyqup.sys.vo.UserVO;
 import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
@@ -20,8 +22,8 @@ public class HelloSysApiFallbackImpl implements HelloSysApi {
     private Throwable cause;
 
     @Override
-    public String saySysHello() {
-        log.error("say Hello Fail", cause);
+    public Result saySysHello() {
+        log.error("say Hello2 Fail", cause);
         return null;
     }
 }

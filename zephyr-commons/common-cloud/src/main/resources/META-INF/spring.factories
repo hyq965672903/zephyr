@@ -1,1 +1,2 @@
-org.springframework.boot.autoconfigure.EnableAutoConfiguration=\cn.hyqup.commom.cloud.configurtion.FeignConfiguration
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+cn.hyqup.commom.cloud.configurtion.FeignConfiguration

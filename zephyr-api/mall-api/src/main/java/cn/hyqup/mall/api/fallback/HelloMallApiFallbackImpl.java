@@ -1,5 +1,6 @@
 package cn.hyqup.mall.api.fallback;
 
+import cn.hyqup.common.core.result.Result;
 import cn.hyqup.mall.api.HelloMallApi;
 import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
@@ -20,7 +21,7 @@ public class HelloMallApiFallbackImpl implements HelloMallApi {
     private Throwable cause;
 
     @Override
-    public String sayMallHello() {
+    public Result sayMallHello() {
         log.error("say Hello Fail", cause);
         return null;
     }

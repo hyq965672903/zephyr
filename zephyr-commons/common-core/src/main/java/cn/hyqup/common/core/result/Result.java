@@ -1,6 +1,9 @@
 package cn.hyqup.common.core.result;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.io.Serializable;
 
@@ -12,58 +15,62 @@ import java.io.Serializable;
  * @date 2020/3/7
  * @description:
  */
+@Builder
 @Data
-public class Result implements Serializable {
-    private Integer code;
+@AllArgsConstructor
+@NoArgsConstructor
+public class Result<T> implements Serializable {
+    private Boolean isSuccess;
+    private String code;
     private String message;
-    private Object data="";
-
-    public Result() {
-    }
-
-    public Result(IResultCode IResultCode, Object data) {
-        this.code = IResultCode.code();
-        this.message = IResultCode.message();
-        this.data = data;
-    }
+    private T data;
 
     public void setResultCode(IResultCode IResultCode) {
         this.code = IResultCode.code();
         this.message = IResultCode.message();
-}
+        this.isSuccess = IResultCode.isSuccess();
+    }
 
-    public static Result success() {
-        Result result = new Result();
+    /**
+     * 响应成功
+     *
+     * @return
+     */
+    public Result<T> success() {
+        Result<T> result = new Result<T>();
         result.setResultCode(ResultCode.SUCCESS);
         return result;
     }
 
-    public static Result success(Object data) {
-        Result result = new Result();
+    public Result<T> success(T data) {
+        Result<T> result = new Result<T>();
         result.setResultCode(ResultCode.SUCCESS);
         result.setData(data);
         return result;
     }
 
-    public static Result failure(IResultCode IResultCode) {
-        Result result = new Result();
-        result.setResultCode(IResultCode);
+
+    /**
+     * 响应失败
+     *
+     * @return
+     */
+    public Result<T> failure() {
+        Result<T> result = new Result<T>();
+        result.setResultCode(ResultCode.FAIL);
         return result;
     }
 
-    public static Result failure(IResultCode IResultCode, Object data) {
-        Result result = new Result();
-        result.setResultCode(IResultCode);
+    public Result<T> failure(IResultCode iResultCode) {
+        Result<T> result = new Result<T>();
+        result.setResultCode(iResultCode);
+        return result;
+    }
+
+    public Result<T> failure(T data) {
+        Result<T> result = new Result<T>();
+        result.setResultCode(ResultCode.FAIL);
         result.setData(data);
         return result;
     }
-
-
-    public static Result failure(String message) {
-        Result result = new Result();
-        result.setCode(401);
-        result.setMessage(message);
-        return result;
-    }
-
 }

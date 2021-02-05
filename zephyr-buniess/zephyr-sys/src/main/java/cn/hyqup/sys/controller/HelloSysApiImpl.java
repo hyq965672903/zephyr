@@ -1,15 +1,24 @@
 package cn.hyqup.sys.controller;
 
+import cn.hyqup.common.core.exception.ExceptionCast;
+import cn.hyqup.common.core.result.Result;
+import cn.hyqup.common.core.result.ResultCode;
 import cn.hyqup.common.web.response.annotation.ResponseResult;
+import cn.hyqup.common.web.validator.Check;
+import cn.hyqup.common.web.validator.CheckType;
 import cn.hyqup.sys.api.HelloSysApi;
+import cn.hyqup.sys.vo.UserVO;
 import lombok.Builder;
 import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.util.Assert;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.validation.Valid;
 import java.util.List;
 
 /**
@@ -27,14 +36,18 @@ public class HelloSysApiImpl implements HelloSysApi {
 //    MyProperties myProperties;
 
     @Override
-    public String saySysHello() {
-//        log.info(myProperties.toString());
-//        int i= 1/0;
-        return "hello saySysHello";
+    public Result saySysHello() {
+//        ExceptionCast.cast(ResultCode.NULLPOINT);
+        UserVO userVO = UserVO.builder()
+                .userName("张三")
+                .build();
+        return Result.builder().build().success(userVO);
     }
 
     @GetMapping("/hello1")
     public String hello1() {
+//        int i = 1 / 0;
+        ExceptionCast.cast(ResultCode.NULLPOINT);
         return "hello1";
     }
 
@@ -46,20 +59,25 @@ public class HelloSysApiImpl implements HelloSysApi {
 
     @ResponseResult
     @GetMapping("/hello3")
-    public User hello3() {
+    public String hello3() {
+        return "张三";
+    }
 
-        return User.builder()
-                .userName("张三")
-                .build();
+    @ResponseResult
+    @PostMapping("/hello4")
+    public String hello4(@Valid Dog dog) {
+        log.info(dog.toString());
+        return "张三";
     }
 
 
 }
 
-@Builder
 @Data
-class User {
-    private String userName;
+class Dog {
+    private String name;
     private String age;
-    private List<String> foods;
+    @Check(type = CheckType.MOBILE,message = "手机后不准确")
+    private String phone;
 }
+

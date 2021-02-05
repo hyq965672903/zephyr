@@ -66,12 +66,12 @@ public class ResponseResultHandler implements ResponseBodyAdvice {
         if (StringUtils.isBlank(need)) {
 //            当body为String类型时 mediaType会变成 plain/text,这个时候转化为resutlt 对象会报对象转换异常
             if (body instanceof String) {
-                return JSON.toJSONString(Result.success(body));
+                return JSON.toJSONString(new Result().success(body));
             }
             if (body instanceof Result) {
                 return body;
             } else {
-                return Result.success(body);
+                return new Result().success(body);
             }
         }
         return body;
