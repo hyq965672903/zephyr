@@ -73,4 +73,11 @@ public class Result<T> implements Serializable {
         result.setData(data);
         return result;
     }
+
+    public Result<T> failure(IResultCode iResultCode,T data) {
+        Result<T> result = new Result<T>();
+        result.setResultCode(iResultCode);
+        result.setData(data);
+        return result;
+    }
 }

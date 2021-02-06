@@ -4,22 +4,14 @@ import cn.hyqup.common.core.exception.ExceptionCast;
 import cn.hyqup.common.core.result.Result;
 import cn.hyqup.common.core.result.ResultCode;
 import cn.hyqup.common.web.response.annotation.ResponseResult;
-import cn.hyqup.common.web.validator.Check;
-import cn.hyqup.common.web.validator.CheckType;
+import cn.hyqup.sys.DTO.Dog;
 import cn.hyqup.sys.api.HelloSysApi;
 import cn.hyqup.sys.vo.UserVO;
-import lombok.Builder;
-import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.util.Assert;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
-
-import javax.validation.Valid;
-import java.util.List;
 
 /**
  * Copyright © 2021灼华. All rights reserved.
@@ -65,19 +57,11 @@ public class HelloSysApiImpl implements HelloSysApi {
 
     @ResponseResult
     @PostMapping("/hello4")
-    public String hello4(@Valid Dog dog) {
+    public String hello4(@Validated Dog dog ) {
         log.info(dog.toString());
         return "张三";
     }
 
 
-}
-
-@Data
-class Dog {
-    private String name;
-    private String age;
-    @Check(type = CheckType.MOBILE,message = "手机后不准确")
-    private String phone;
 }
 

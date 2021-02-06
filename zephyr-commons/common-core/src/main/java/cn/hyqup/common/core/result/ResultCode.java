@@ -25,6 +25,7 @@ public enum ResultCode implements IResultCode {
      */
     SUCCESS(true, "00000", "操作成功！"),
     FAIL(false, "A0001", "操作失败！"),
+    PARMERROR(false, "A0002", "请求参数不合法！"),
 
     /**
      * 系统可预知异常

@@ -9,10 +9,14 @@ import cn.hyqup.common.core.result.ResultCode;
 import com.google.common.collect.ImmutableMap;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.converter.HttpMessageNotReadableException;
+import org.springframework.validation.BindException;
+import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
+
+import javax.validation.ConstraintViolationException;
 
 /**
  * Copyright © 2020灼华. All rights reserved.
@@ -63,6 +67,7 @@ public class ExceptionCatch extends ResponseEntityExceptionHandler {
     public Result exception(Exception exception) {
         log.error("catch exception:{}", exception.getMessage());
         exception.printStackTrace();
+
         if (EXCEPTIONS == null) {
             EXCEPTIONS = builder.build();
         }
@@ -72,9 +77,8 @@ public class ExceptionCatch extends ResponseEntityExceptionHandler {
         } else {
             return Result.builder().build().failure(ResultCode.SERVER_ERROR);
         }
-
-
     }
+
 
     static {
         /**
