@@ -1,12 +1,9 @@
 package cn.hyqup.sys.DTO;
 
-import cn.hyqup.common.web.validator.Check;
-import cn.hyqup.common.web.validator.CheckType;
 import lombok.Data;
 import org.springframework.validation.annotation.Validated;
 
 import javax.validation.Valid;
-import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Pattern;
 

@@ -9,13 +9,10 @@ import cn.hyqup.sys.DTO.School;
 import cn.hyqup.sys.api.HelloSysApi;
 import cn.hyqup.sys.vo.UserVO;
 import lombok.extern.slf4j.Slf4j;
-import org.hibernate.validator.constraints.Range;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
-import javax.validation.Valid;
 import javax.validation.constraints.Email;
-import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
 
@@ -74,12 +71,12 @@ public class HelloSysApiImpl implements HelloSysApi {
     public String hello5(
 //            @Min(value = 1, message = "班级最小只能1")
 //            @Max(value = 99, message = "班级最大只能99")
-
             @RequestParam(name = "grade")
                     Integer grade,
             @Email(message = "邮箱格式错误")
+            @Min(value = 1, message = "email最小只能1")
 //            @NotBlank(message = "不能为空")
-            @RequestParam(name = "email")
+            @RequestParam(name = "email",required = false)
                     String email) {
         log.info(grade + email);
         return "张三";
@@ -87,7 +84,7 @@ public class HelloSysApiImpl implements HelloSysApi {
 
     @ResponseResult
     @PostMapping("/hello6")
-    public String hello6(  @Validated @RequestBody School school) {
+    public String hello6(@Validated @RequestBody School school) {
         log.info(school.toString());
         return "张三";
     }

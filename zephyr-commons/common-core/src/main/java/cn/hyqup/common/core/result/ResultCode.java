@@ -2,7 +2,6 @@ package cn.hyqup.common.core.result;
 
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
-import lombok.ToString;
 
 /**
  * Copyright © 2020灼华. All rights reserved.
@@ -16,6 +15,25 @@ import lombok.ToString;
 @AllArgsConstructor
 @NoArgsConstructor
 public enum ResultCode implements IResultCode {
+    /**
+     * SpringMVC默认级别的异常封装
+     */
+    METHOD_NOT_SUPPORT(false,"405","请求方法类型不支持,请检查请求类型！"),
+    MEDIA_TYPE_NOT_SUPPORT(false,"405","HTTP媒体类型不支持异常!"),
+    MEDIA_TYPE_NOT_ACCEPTABLE(false,"406","客户端请求期望响应的媒体类型与服务器响应的媒体类型不一致!"),
+    MISSING_PATH_VARIABLE(false,"500","缺少可选的路径参数!"),
+    MISSING_SERVLET_REQUEST_PARAMETER(false,"400","缺少请求参数!"),
+    REQUEST_BINDING(false,"400","请求绑定异常!"),
+    CONVERSION_NOT_SUPPORTED(false,"500","参数绑定异常!"),
+    TYPE_MIS_MATCH(false,"400","类型不匹配异常!"),
+    MESSAGE_NOT_READABLE(false,"400","消息不可读异常!"),
+    MESSAGE_NOT_WRITABLE(false,"500","消息不可写异常!"),
+    METHOD_ARGUMENT_NOT_VALID(false,"400","请求参数不合法！"),
+    MISSING_SERVLET_REQUEST_PART(false,"400",""),
+    BIND(false,"400","请求参数不合法！"),
+    NO_HANDLER_FOUND(false,"404","没有找到合适的处理器,处理器可能不存在,请检查路径是否正确！"),
+    ASYNC_REQUEST_TIMEOUT(false,"503","异步请求超时"),
+
     /**
      * 不可预知系统异常
      */
