@@ -13,7 +13,6 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.constraints.Email;
-import javax.validation.constraints.Min;
 
 /**
  * Copyright © 2021灼华. All rights reserved.
@@ -73,9 +72,9 @@ public class HelloSysApiImpl implements HelloSysApi {
             @RequestParam(name = "grade")
                     Integer grade,
             @Email(message = "邮箱格式错误")
-            @Min(value = 1, message = "email最小只能1")
+//            @ParamCheck(fun = Check.Custom, message = "错误", express = "userNameCheck")
 //            @NotBlank(message = "不能为空")
-            @RequestParam(name = "email",required = false)
+            @RequestParam(name = "email", required = false)
                     String email) {
         log.info(grade + email);
         return "张三";

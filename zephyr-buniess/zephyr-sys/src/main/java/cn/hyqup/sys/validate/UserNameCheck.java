@@ -18,6 +18,6 @@ public class UserNameCheck implements ParamValidator {
     @Override
     public Boolean validate(Object value) {
         log.info("进入自定义规则校验");
-        return true;
+        return false;
     }
 }

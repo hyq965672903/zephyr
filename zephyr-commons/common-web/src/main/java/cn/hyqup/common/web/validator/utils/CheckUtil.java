@@ -14,8 +14,8 @@ import java.util.function.Function;
  */
 public class CheckUtil {
 
-    public static Boolean customValidate(Object value, String beanName) {
-        ParamValidator bean = SpringContextHolder.getBean(beanName);
+    public static Boolean customValidate(Object value, Class<? extends ParamValidator> clazz) {
+        ParamValidator bean = SpringContextHolder.getBean(clazz);
         if (bean == null) {
             throw new IllegalArgumentException("invalied bean, this bean can not  found in spring context");
         }

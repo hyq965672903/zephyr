@@ -1,7 +1,7 @@
 package cn.hyqup.common.web.validator.core;
 
 import cn.hyqup.common.web.validator.annations.ParamCheck;
-import cn.hyqup.common.web.validator.enums.Check;
+import cn.hyqup.common.web.validator.enums.CheckType;
 
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
@@ -16,19 +16,15 @@ import javax.validation.ConstraintValidatorContext;
  */
 public class ParamCheckValidator implements ConstraintValidator<ParamCheck, Object> {
 
-    private static final String DEFAULT_MSG = "参数验证错误";
-    private Check func;
-    private String express;
-    private String msg;
+    private String message;
+    private CheckType checkType;
+    private Class<? extends ParamValidator> clazz;
 
     @Override
-    public void initialize(ParamCheck constraintAnnotation) {
-        func = constraintAnnotation.fun();
-        express = constraintAnnotation.express();
-        msg = constraintAnnotation.message();
-        if (DEFAULT_MSG.equals(msg)) {
-            msg = func.msg + express;
-        }
+    public void initialize(ParamCheck paramCheck) {
+        message = paramCheck.message();
+        checkType = paramCheck.checkType();
+        clazz= paramCheck.clazz();
     }
 
     @Override
@@ -36,10 +32,10 @@ public class ParamCheckValidator implements ConstraintValidator<ParamCheck, Obje
         if (null == value) {
             return true;
         }
-        String tmpMsg = msg;
+        String tmpMsg = message;
         Boolean res = false;
         try {
-            res = func.fun.apply(value, express);
+            res = checkType.fun.apply(value, clazz);
         } catch (Exception e) {
             String errorMessage = "";
             if (e.getCause() != null && e.getCause().getMessage() != null) {
@@ -47,7 +43,7 @@ public class ParamCheckValidator implements ConstraintValidator<ParamCheck, Obje
             } else {
                 errorMessage = e.getMessage();
             }
-            tmpMsg = msg + "; raw exception occured, info: " + errorMessage;
+            tmpMsg = message + "; raw exception occured, info: " + errorMessage;
         }
         if (!res) {
             context.disableDefaultConstraintViolation();

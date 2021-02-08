@@ -47,18 +47,27 @@ public class ValidateExceptionCatch extends ResponseEntityExceptionHandler {
 
     @Override
     protected ResponseEntity<Object> handleMethodArgumentNotValid(MethodArgumentNotValidException ex, HttpHeaders headers, HttpStatus status, WebRequest request) {
-        String message = "";
-        for (ObjectError objectError : ex.getBindingResult().getAllErrors()) {
-            StringBuilder str = new StringBuilder();
-            FieldError fieldError = (FieldError) objectError;
-            str.append(fieldError.getField());
-            str.append(":");
-            str.append(fieldError.getDefaultMessage());
-            message = str.toString();
-            break;
+        if (ex.getBindingResult().hasErrors()) {
+            String message = "";
+            for (ObjectError objectError : ex.getBindingResult().getAllErrors()) {
+                StringBuilder str = new StringBuilder();
+                FieldError fieldError = null;
+                if (objectError instanceof FieldError) {
+                    fieldError = (FieldError) objectError;
+                    str.append(fieldError.getField());
+                    str.append(":");
+                    str.append(fieldError.getDefaultMessage());
+                    message = str.toString();
+                    break;
+                }else {
+                    return new ResponseEntity<>(Result.builder().build().failure(ResultCode.UN_KNOW), status);
+                }
+            }
+            return new ResponseEntity<>(Result.builder().build().failureWithMessage(ResultCode.METHOD_ARGUMENT_NOT_VALID,message), status);
         }
-        return new ResponseEntity<>(Result.builder().build().failure(ResultCode.METHOD_ARGUMENT_NOT_VALID, message), status);
+        return super.handleExceptionInternal(ex, null, headers, status, request);
     }
+
 
     @Override
     protected ResponseEntity<Object> handleBindException(BindException ex, HttpHeaders headers, HttpStatus status, WebRequest request) {
@@ -72,19 +81,19 @@ public class ValidateExceptionCatch extends ResponseEntityExceptionHandler {
             message = str.toString();
             break;
         }
-        return new ResponseEntity<>(Result.builder().build().failure(ResultCode.BIND, message), status);
+        return new ResponseEntity<>(Result.builder().build().failureWithMessage(ResultCode.BIND,message), status);
     }
 
     /**
-     *     处理请求参数格式错误 @RequestParam上validate失败后抛出的异常是javax.validation.ConstraintViolationException
-     *     这个异常也是属于javax.validation的校验异常，但不属于springMVC默认处理的异常 所以我们这额外处理了
+     * 处理请求参数格式错误 @RequestParam上validate失败后抛出的异常是javax.validation.ConstraintViolationException
+     * 这个异常也是属于javax.validation的校验异常，但不属于springMVC默认处理的异常 所以我们这额外处理了
      */
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     @ExceptionHandler(ConstraintViolationException.class)
     @ResponseBody
     public Result ConstraintViolationExceptionHandler(ConstraintViolationException e) {
         String message = e.getConstraintViolations().stream().map(ConstraintViolation::getMessage).collect(Collectors.joining());
-        return Result.builder().build().failure(ResultCode.PARMERROR, message);
+        return Result.builder().build().failureWithMessage(ResultCode.PARMERROR,message);
     }
 
 }

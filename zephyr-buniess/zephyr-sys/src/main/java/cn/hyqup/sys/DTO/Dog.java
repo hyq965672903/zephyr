@@ -1,9 +1,9 @@
 package cn.hyqup.sys.DTO;
 
 import cn.hyqup.common.web.validator.annations.ParamCheck;
-import cn.hyqup.common.web.validator.enums.Check;
+import cn.hyqup.common.web.validator.enums.CheckType;
+import cn.hyqup.sys.validate.UserNameCheck;
 import lombok.Data;
-import org.springframework.validation.annotation.Validated;
 
 import javax.validation.Valid;
 import javax.validation.constraints.NotEmpty;
@@ -17,10 +17,9 @@ import javax.validation.constraints.Pattern;
  * @date 2021/2/6
  * @description:
  */
-@Validated
 @Data
 public class Dog {
-    @ParamCheck(fun = Check.Custom,message = "自定义校验异常",express = "userNameCheck")
+    @ParamCheck(checkType = CheckType.Custom,message = "自定义校验异常",clazz = UserNameCheck.class)
     private String name;
     private String age;
     //    @Check(type = CheckType.MOBILE, message = "手机后不准确")
