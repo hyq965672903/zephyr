@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.validation.constraints.Email;
 import javax.validation.constraints.Min;
-import javax.validation.constraints.NotBlank;
 
 /**
  * Copyright © 2021灼华. All rights reserved.
@@ -63,7 +62,7 @@ public class HelloSysApiImpl implements HelloSysApi {
     @PostMapping("/hello4")
     public String hello4(@Validated @RequestBody Dog dog) {
         log.info(dog.toString());
-        return "张三";
+        return dog.toString();
     }
 
     @ResponseResult
