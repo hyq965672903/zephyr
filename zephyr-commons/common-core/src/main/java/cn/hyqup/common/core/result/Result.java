@@ -80,4 +80,10 @@ public class Result<T> implements Serializable {
         result.setData(data);
         return result;
     }
+    public Result failure(String message) {
+        Result result = new Result();
+        result.setResultCode(ResultCode.FAIL);
+        result.setMessage(message);
+        return result;
+    }
 }

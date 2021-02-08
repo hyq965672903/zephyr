@@ -4,6 +4,7 @@ import cn.hyqup.common.web.response.interceptor.ResponseResultInterceptor;
 import com.alibaba.fastjson.serializer.SerializerFeature;
 import com.alibaba.fastjson.support.config.FastJsonConfig;
 import com.alibaba.fastjson.support.spring.FastJsonHttpMessageConverter;
+import org.hibernate.validator.HibernateValidator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
@@ -11,10 +12,14 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.http.MediaType;
 import org.springframework.http.converter.HttpMessageConverter;
 import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
+import org.springframework.validation.beanvalidation.MethodValidationPostProcessor;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
+import javax.validation.Validation;
+import javax.validation.Validator;
+import javax.validation.ValidatorFactory;
 import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
@@ -34,6 +39,8 @@ import java.util.List;
 public class WebConfigurer implements WebMvcConfigurer {
     @Autowired
     private ResponseResultInterceptor responseResultInterceptor;
+    @Autowired
+    MethodValidationPostProcessor methodValidationPostProcessor;
 
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
@@ -104,6 +111,28 @@ public class WebConfigurer implements WebMvcConfigurer {
         supportedMediaTypes.add(MediaType.TEXT_XML);
         return supportedMediaTypes;
     }
+
+    /**
+     * 开启jsr 303 快速校验,目的是只要有一个不满足则校验不通过，而不是全部校验，提高程序响应速度
+     *
+     * @return
+     */
+//    @Bean
+//    public Validator validator() {
+//        ValidatorFactory validatorFactory = Validation
+//                .byProvider(HibernateValidator.class)
+//                .configure()
+//                .failFast(true)
+//                .buildValidatorFactory();
+//        return validatorFactory.getValidator();
+//    }
+//
+//    @Bean
+//    public MethodValidationPostProcessor methodValidationPostProcessor() {
+//        MethodValidationPostProcessor methodValidationPostProcessor = new MethodValidationPostProcessor();
+//        methodValidationPostProcessor.setValidator(validator());
+//        return methodValidationPostProcessor;
+//    }
 
 
 }

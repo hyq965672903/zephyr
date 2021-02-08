@@ -1,1 +1,2 @@
-org.springframework.boot.autoconfigure.EnableAutoConfiguration=\cn.hyqup.common.web.config.WebConfigurer
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+cn.hyqup.common.web.config.WebConfigurer

@@ -19,7 +19,6 @@
     <properties>
         <zephyr.version>0.0.1-SNAPSHOT</zephyr.version>
     </properties>
-
     <dependencyManagement>
         <dependencies>
             <dependency>
@@ -29,6 +28,4 @@
             </dependency>
         </dependencies>
     </dependencyManagement>
-
-
 </project>

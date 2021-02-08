@@ -36,6 +36,7 @@
         <guava.version>30.1-jre</guava.version>
         <hutool.version>5.5.7</hutool.version>
         <mysql.version>8.0.19</mysql.version>
+        <fastjson.version>1.2.75</fastjson.version>
         <zephyr.version>0.0.1-SNAPSHOT</zephyr.version>
     </properties>
 
@@ -67,6 +68,11 @@
             <groupId>cn.hutool</groupId>
             <artifactId>hutool-all</artifactId>
             <version>${hutool.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>fastjson</artifactId>
+            <version>${fastjson.version}</version>
         </dependency>
     </dependencies>
 

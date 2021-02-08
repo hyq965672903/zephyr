@@ -5,13 +5,19 @@ import cn.hyqup.common.core.result.Result;
 import cn.hyqup.common.core.result.ResultCode;
 import cn.hyqup.common.web.response.annotation.ResponseResult;
 import cn.hyqup.sys.DTO.Dog;
+import cn.hyqup.sys.DTO.School;
 import cn.hyqup.sys.api.HelloSysApi;
 import cn.hyqup.sys.vo.UserVO;
 import lombok.extern.slf4j.Slf4j;
+import org.hibernate.validator.constraints.Range;
 import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import javax.validation.Valid;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotBlank;
 
 /**
  * Copyright © 2021灼华. All rights reserved.
@@ -22,6 +28,7 @@ import org.springframework.web.bind.annotation.RestController;
  * @description:
  */
 @Slf4j
+@Validated
 @RestController
 public class HelloSysApiImpl implements HelloSysApi {
 //    @Autowired
@@ -57,8 +64,31 @@ public class HelloSysApiImpl implements HelloSysApi {
 
     @ResponseResult
     @PostMapping("/hello4")
-    public String hello4(@Validated Dog dog ) {
+    public String hello4(@Validated @RequestBody Dog dog) {
         log.info(dog.toString());
+        return "张三";
+    }
+
+    @ResponseResult
+    @GetMapping("/hello5")
+    public String hello5(
+//            @Min(value = 1, message = "班级最小只能1")
+//            @Max(value = 99, message = "班级最大只能99")
+
+            @RequestParam(name = "grade")
+                    Integer grade,
+            @Email(message = "邮箱格式错误")
+//            @NotBlank(message = "不能为空")
+            @RequestParam(name = "email")
+                    String email) {
+        log.info(grade + email);
+        return "张三";
+    }
+
+    @ResponseResult
+    @PostMapping("/hello6")
+    public String hello6(  @Validated @RequestBody School school) {
+        log.info(school.toString());
         return "张三";
     }
 
