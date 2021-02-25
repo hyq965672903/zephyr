@@ -1,0 +1,29 @@
+server:
+  port: 10010
+spring:
+  application:
+    name: zephyr-auth
+  cloud:
+    nacos:
+      discovery:
+        server-addr: http://localhost:8848
+  redis:
+    database: 0
+    host: 118.24.169.98
+    password:
+    port: 6379
+#配置相关
+zephyr:
+  security:
+    code:
+      image:
+        length: 4
+        url: /hello
+    oauth2:
+      tokenStore: jwt
+      clients:
+        - clientId: zephyr
+          clientSecret: zephyrsecret
+#          redirectUris: http://baidu.com
+          registeredRedirectUri: 0
+
