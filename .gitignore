@@ -11,3 +11,4 @@ log
 *.dat
 logs
 !**/nacos/target
+/zephyr-registry/
