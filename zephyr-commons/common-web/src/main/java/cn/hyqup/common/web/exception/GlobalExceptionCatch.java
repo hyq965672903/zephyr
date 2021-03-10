@@ -47,7 +47,7 @@ public class GlobalExceptionCatch {
         customException.printStackTrace();
         log.error(customException.getStackTrace().toString());
         IResultCode iResultCode = customException.getIResultCode();
-        return Result.builder().build().failure(iResultCode);
+        return Result.fail(iResultCode);
     }
 
     /**
@@ -58,7 +58,7 @@ public class GlobalExceptionCatch {
      * @param exception
      * @return
      */
-    @ExceptionHandler(Exception.class)
+    @ExceptionHandler({Exception.class})
     @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
     @ResponseBody
     public Result exception(Exception exception) {
@@ -69,9 +69,9 @@ public class GlobalExceptionCatch {
         }
         IResultCode IResultCode = EXCEPTIONS.get(exception.getClass());
         if (IResultCode != null) {
-            return Result.builder().build().failure(IResultCode);
+            return Result.fail(IResultCode);
         } else {
-            return Result.builder().build().failure(ResultCode.SERVER_ERROR);
+            return Result.fail(ResultCode.SERVER_ERROR);
         }
     }
     static {

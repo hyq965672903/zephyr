@@ -11,4 +11,4 @@ log
 *.dat
 logs
 !**/nacos/target
-/zephyr-registry/
+zephyr-registry/nacos/target/nacos-server.jar

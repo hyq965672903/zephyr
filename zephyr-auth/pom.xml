@@ -25,6 +25,11 @@
             <artifactId>common-web</artifactId>
             <version>${zephyr.version}</version>
         </dependency>
+        <!--oauth 相关依赖-->
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-oauth2</artifactId>
+        </dependency>
     </dependencies>
 
     <build>

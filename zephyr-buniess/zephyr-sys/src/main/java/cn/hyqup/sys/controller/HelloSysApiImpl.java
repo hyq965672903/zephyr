@@ -35,7 +35,7 @@ public class HelloSysApiImpl implements HelloSysApi {
         UserVO userVO = UserVO.builder()
                 .userName("张三")
                 .build();
-        return Result.builder().build().success(userVO);
+        return Result.data(userVO);
     }
 
     @GetMapping("/hello1")

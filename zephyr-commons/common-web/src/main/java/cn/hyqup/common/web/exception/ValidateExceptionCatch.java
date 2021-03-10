@@ -42,7 +42,7 @@ import java.util.stream.Collectors;
 public class ValidateExceptionCatch extends ResponseEntityExceptionHandler {
     @Override
     protected ResponseEntity<Object> handleMissingServletRequestParameter(MissingServletRequestParameterException ex, HttpHeaders headers, HttpStatus status, WebRequest request) {
-        return new ResponseEntity<>(Result.builder().message(ex.getMessage()).build().failure(ResultCode.MISSING_SERVLET_REQUEST_PARAMETER), status);
+        return new ResponseEntity<>(Result.fail(ResultCode.MISSING_SERVLET_REQUEST_PARAMETER), status);
     }
 
     @Override
@@ -60,10 +60,10 @@ public class ValidateExceptionCatch extends ResponseEntityExceptionHandler {
                     message = str.toString();
                     break;
                 }else {
-                    return new ResponseEntity<>(Result.builder().build().failure(ResultCode.UN_KNOW), status);
+                    return new ResponseEntity<>(Result.fail(ResultCode.UN_KNOW), status);
                 }
             }
-            return new ResponseEntity<>(Result.builder().build().failureWithMessage(ResultCode.METHOD_ARGUMENT_NOT_VALID,message), status);
+            return new ResponseEntity<>(Result.fail(ResultCode.METHOD_ARGUMENT_NOT_VALID,message), status);
         }
         return super.handleExceptionInternal(ex, null, headers, status, request);
     }
@@ -81,7 +81,7 @@ public class ValidateExceptionCatch extends ResponseEntityExceptionHandler {
             message = str.toString();
             break;
         }
-        return new ResponseEntity<>(Result.builder().build().failureWithMessage(ResultCode.BIND,message), status);
+        return new ResponseEntity<>(Result.fail(ResultCode.BIND,message), status);
     }
 
     /**
@@ -93,7 +93,7 @@ public class ValidateExceptionCatch extends ResponseEntityExceptionHandler {
     @ResponseBody
     public Result ConstraintViolationExceptionHandler(ConstraintViolationException e) {
         String message = e.getConstraintViolations().stream().map(ConstraintViolation::getMessage).collect(Collectors.joining());
-        return Result.builder().build().failureWithMessage(ResultCode.PARMERROR,message);
+        return Result.fail(ResultCode.PARMERROR,message);
     }
 
 }

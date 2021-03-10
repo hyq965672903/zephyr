@@ -42,16 +42,33 @@ public enum ResultCode implements IResultCode {
      * 基本的返回
      */
     SUCCESS(true, "00000", "操作成功！"),
-    FAIL(false, "A0001", "操作失败！"),
+    FAILURE(false, "A0001", "操作失败！"),
     PARMERROR(false, "A0002", "请求参数不合法！"),
 
     /**
      * 系统可预知异常
      */
     UN_KNOW(false, "A0200", "未知错误"),
-    NULLPOINT(false, "A0201", "空指针异常");
+    NULLPOINT(false, "A0201", "空指针异常"),
+
+    /**
+     * 账户异常
+     */
+    USER_LOGIN_FAIL(false, "A0300", "用户登录失败"),
+    USER_PASSWORD_ERROR(false, "A0301", "用户名或密码错误"),
+    USER_ACCOUNT_EXPIRED(false, "A0302", "用户账号过期"),
+    USER_PASSWORD_EXPIRED(false, "A0303", "用户密码过期"),
+    USER_DISABLED(false, "A0304", "用户被禁用,请联系管理员"),
+    USER_LOCKED(false, "A0305", "用户被锁定"),
+    UNSUPPORTED_GRANT_TYPE(false, "A0306", "不支持该认证类型,grant_type错误"),
+    INVALID_TOKEN(false, "A0307", "刷新令牌已过期，请重新登录"),
+    INVALID_SCOPE(false, "A0308", "不是有效的scope值"),
+    REFRESH_TOKEN_INVALID(false, "A0309", "refreshtoken无效"),
+    AUTHORIZATION_CODE_INVALID(false, "A0310", "authorization code无效"),
 
 
+
+    ;
     public Boolean isSuccess;
     public String code;
     public String message;
