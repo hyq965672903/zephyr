@@ -65,6 +65,8 @@ public enum ResultCode implements IResultCode {
     INVALID_SCOPE(false, "A0308", "不是有效的scope值"),
     REFRESH_TOKEN_INVALID(false, "A0309", "refreshtoken无效"),
     AUTHORIZATION_CODE_INVALID(false, "A0310", "authorization code无效"),
+    TOKEN_INVALID_OR_EXPIRED(false, "A0311", "token无效或者已过期自定义响应"),
+    ACCESS_UNAUTHORIZED(false, "A0312", "未授权"),
 
 
 
