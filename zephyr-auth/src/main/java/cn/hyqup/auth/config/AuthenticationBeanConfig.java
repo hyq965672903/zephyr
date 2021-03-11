@@ -1,6 +1,7 @@
 
 package cn.hyqup.auth.config;
 
+
 import cn.hyqup.auth.service.ZephyrAccountStatusUserDetailsChecker;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.context.annotation.Bean;
@@ -8,6 +9,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AccountStatusUserDetailsChecker;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+
 
 /**
  * Copyright © 2021灼华. All rights reserved.

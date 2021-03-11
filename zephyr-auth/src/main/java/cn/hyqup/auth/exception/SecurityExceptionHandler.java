@@ -16,8 +16,7 @@ import org.springframework.security.web.util.ThrowableAnalyzer;
  * @author create by hyq
  * @version 1.0
  * @date 2021/3/10
- * @description:
- * 1、如果是 InternalAuthenticationServiceException 认证异常去异常堆里去捞
+ * @description: 1、如果是 InternalAuthenticationServiceException 认证异常去异常堆里去捞
  * 2、如果是普通的 AuthenticationException 直接instanceof 转换
  * 3、如果是 Oauth2Exception 直接instanceof 转换
  * ps:InternalAuthenticationServiceException 是 AuthenticationException 的子类
@@ -141,8 +140,10 @@ public class SecurityExceptionHandler {
      * @return
      */
     private static Result<?> handlerOAuth2Exception(Exception e) {
-        Result<?> result = null;
-        if (e instanceof UnsupportedGrantTypeException) {
+        Result<?> result = Result.fail(ResultCode.USER_LOGIN_FAIL);
+        if (e instanceof InvalidClientException) {
+            result = Result.fail(ResultCode.UNSUPPORTED_GRANT_TYPE);
+        } else if (e instanceof UnsupportedGrantTypeException) {
             result = Result.fail(ResultCode.UNSUPPORTED_GRANT_TYPE);
         } else if (e instanceof InvalidTokenException
                 && StringUtils.containsIgnoreCase(e.getMessage(), "Invalid refresh token (expired)")) {
@@ -156,11 +157,10 @@ public class SecurityExceptionHandler {
                 result = Result.fail(ResultCode.AUTHORIZATION_CODE_INVALID);
             } else if (StringUtils.containsIgnoreCase(e.getMessage(), "locked")) {
                 result = Result.fail(ResultCode.USER_LOCKED);
-            }else if (StringUtils.containsIgnoreCase(e.getMessage(), "Bad credentials")){
+            } else if (StringUtils.containsIgnoreCase(e.getMessage(), "Bad credentials")) {
                 result = Result.fail(ResultCode.USER_PASSWORD_ERROR);
-            }else {
+            } else {
                 result = Result.fail(ResultCode.USER_LOGIN_FAIL);
-
             }
         }
         return result;

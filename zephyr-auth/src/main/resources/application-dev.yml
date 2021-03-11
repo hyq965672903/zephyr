@@ -12,6 +12,12 @@ spring:
     host: 118.24.169.98
     password:
     port: 6379
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3306/zephyr_sys?autoReconnect=true&useSSL=false&characterEncoding=utf-8&serverTimezone=Asia/Shanghai
+    username: root
+    password: root
+
 #配置相关
 zephyr:
   security:

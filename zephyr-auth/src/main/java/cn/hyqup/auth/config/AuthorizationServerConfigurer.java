@@ -2,15 +2,12 @@ package cn.hyqup.auth.config;
 
 
 import cn.hyqup.auth.authentication.granter.MobilePwdGranter;
-import cn.hyqup.auth.properties.OAuth2ClientProperties;
 import cn.hyqup.auth.properties.base.SecurityProperties;
 import cn.hyqup.auth.service.ZephyrUserDetailsService;
-import org.apache.commons.lang3.ArrayUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.security.oauth2.config.annotation.builders.InMemoryClientDetailsServiceBuilder;
 import org.springframework.security.oauth2.config.annotation.configurers.ClientDetailsServiceConfigurer;
 import org.springframework.security.oauth2.config.annotation.web.configuration.AuthorizationServerConfigurerAdapter;
 import org.springframework.security.oauth2.config.annotation.web.configuration.EnableAuthorizationServer;
@@ -20,12 +17,14 @@ import org.springframework.security.oauth2.provider.ClientDetailsService;
 import org.springframework.security.oauth2.provider.CompositeTokenGranter;
 import org.springframework.security.oauth2.provider.OAuth2RequestFactory;
 import org.springframework.security.oauth2.provider.TokenGranter;
+import org.springframework.security.oauth2.provider.client.JdbcClientDetailsService;
 import org.springframework.security.oauth2.provider.token.AuthorizationServerTokenServices;
 import org.springframework.security.oauth2.provider.token.TokenEnhancer;
 import org.springframework.security.oauth2.provider.token.TokenEnhancerChain;
 import org.springframework.security.oauth2.provider.token.TokenStore;
 import org.springframework.security.oauth2.provider.token.store.JwtAccessTokenConverter;
 
+import javax.sql.DataSource;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -61,6 +60,9 @@ public class AuthorizationServerConfigurer extends AuthorizationServerConfigurer
 
     @Autowired
     private AuthenticationManager authenticationManager;
+
+    @Autowired
+    DataSource dataSource;
 
     /**
      * 配置令牌的存储
@@ -105,25 +107,33 @@ public class AuthorizationServerConfigurer extends AuthorizationServerConfigurer
      */
     @Override
     public void configure(ClientDetailsServiceConfigurer clients) throws Exception {
-        clients.withClientDetails(clientDetailsService());
+        clients.withClientDetails(jdbcClientDetailsService());
     }
 
-    @Autowired
-    private ClientDetailsService clientDetailsService() throws Exception {
-        InMemoryClientDetailsServiceBuilder builder = new InMemoryClientDetailsServiceBuilder().inMemory();
-        if (ArrayUtils.isNotEmpty(securityProperties.getOauth2().getClients())) {
-            for (OAuth2ClientProperties client : securityProperties.getOauth2().getClients()) {
-                builder.withClient(client.getClientId())//Client 账号
-                        .secret(passwordEncoder.encode(client.getClientSecret()))// Client 密码
-                        .redirectUris(client.getRedirectUris()) // 配置回调地址，选填。
-                        .authorizedGrantTypes("refresh_token", "authorization_code", "mobile_password", "password") // 授权码模式
-                        .accessTokenValiditySeconds(client.getAccessTokenValidateSeconds()) // token 有效期
-                        .refreshTokenValiditySeconds(2592000) // refreshToken 有效期30天
-                        .scopes("all"); // 可授权的 Scope
-            }
-        }
-        return builder.build();
+
+    private ClientDetailsService jdbcClientDetailsService() {
+        // 直接构建JdbcClientDetailsService对象
+        JdbcClientDetailsService jdbcClientDetailsService = new JdbcClientDetailsService(dataSource);
+        jdbcClientDetailsService.setPasswordEncoder(passwordEncoder);
+        return jdbcClientDetailsService;
     }
+
+//    @Autowired
+//    private ClientDetailsService clientDetailsService() throws Exception {
+//        InMemoryClientDetailsServiceBuilder builder = new InMemoryClientDetailsServiceBuilder().inMemory();
+//        if (ArrayUtils.isNotEmpty(securityProperties.getOauth2().getClients())) {
+//            for (OAuth2ClientProperties client : securityProperties.getOauth2().getClients()) {
+//                builder.withClient(client.getClientId())//Client 账号
+//                        .secret(passwordEncoder.encode(client.getClientSecret()))// Client 密码
+//                        .redirectUris(client.getRedirectUris()) // 配置回调地址，选填。
+//                        .authorizedGrantTypes("refresh_token", "authorization_code", "mobile_password", "password") // 授权码模式
+//                        .accessTokenValiditySeconds(client.getAccessTokenValidateSeconds()) // token 有效期
+//                        .refreshTokenValiditySeconds(2592000) // refreshToken 有效期30天
+//                        .scopes("all"); // 可授权的 Scope
+//            }
+//        }
+//        return builder.build();
+//    }
 
     /**
      * @param security
