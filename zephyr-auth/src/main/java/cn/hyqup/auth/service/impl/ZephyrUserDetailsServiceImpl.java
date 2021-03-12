@@ -6,10 +6,14 @@ import cn.hyqup.auth.service.ZephyrUserDetailsService;
 import com.alibaba.fastjson.JSON;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.AuthorityUtils;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 /**
  * Copyright © 2021灼华. All rights reserved.
@@ -34,7 +38,8 @@ public class ZephyrUserDetailsServiceImpl implements ZephyrUserDetailsService {
 //            throw new BadCredentialsException("密码错误，请重新输入");
 //        }
         log.info(encode);
-        LoginAppUser loginAppUser = new LoginAppUser("17788888888", "张三", "17788888888", encode, null);
+        List<GrantedAuthority> grantedAuthorities = AuthorityUtils.createAuthorityList("admin");
+        LoginAppUser loginAppUser = new LoginAppUser("17788888888", "张三", "17788888888", encode, grantedAuthorities);
         log.info("登陆用户当前状态：{}", JSON.toJSON(loginAppUser));
         zephyrAccountStatusUserDetailsChecker.check(loginAppUser);
         return loginAppUser;
@@ -44,7 +49,8 @@ public class ZephyrUserDetailsServiceImpl implements ZephyrUserDetailsService {
     public UserDetails loadUserByMobile(String mobile) {
         String encode = passwordEncoder.encode("123");
         log.info(encode);
-        LoginAppUser loginAppUser = new LoginAppUser("17788888888", "张三", "17788888888", encode, null);
+        List<GrantedAuthority> grantedAuthorities = AuthorityUtils.createAuthorityList("admin");
+        LoginAppUser loginAppUser = new LoginAppUser("17788888888", "张三", "17788888888", encode, grantedAuthorities);
         zephyrAccountStatusUserDetailsChecker.check(loginAppUser);
         log.info("登陆用户当前状态：{}", JSON.toJSON(loginAppUser));
         return loginAppUser;

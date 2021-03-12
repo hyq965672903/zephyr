@@ -34,8 +34,6 @@ public class AuthorizationManager implements ReactiveAuthorizationManager<Author
 
     @Override
     public Mono<AuthorizationDecision> check(Mono<Authentication> mono, AuthorizationContext authorizationContext) {
-
-
         ServerHttpRequest request = authorizationContext.getExchange().getRequest();
         String path = request.getMethodValue() + "_" + request.getURI().getPath();
         log.info("请求，path={}", path);
@@ -65,7 +63,7 @@ public class AuthorizationManager implements ReactiveAuthorizationManager<Author
         Iterator<Object> iterator = permissionRoles.keySet().iterator();
         // 请求路径匹配到的资源需要的角色权限集合authorities统计
         Set<String> authorities = new HashSet<>();
-        while (iterator.hasNext()) {
+            while (iterator.hasNext()) {
             String pattern = (String) iterator.next();
             if (pathMatcher.match(pattern, path)) {
                 authorities.addAll(Convert.toList(String.class, permissionRoles.get(pattern)));
