@@ -6,9 +6,11 @@ target/
 *.iml
 
 log
+logs
 *.log
 *.ctrl
 *.dat
-logs
+*.lck
 !**/nacos/target
 zephyr-registry/nacos/target/nacos-server.jar
+zephyr-registry/nacos/
