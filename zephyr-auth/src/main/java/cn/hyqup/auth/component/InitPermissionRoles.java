@@ -1,5 +1,6 @@
 package cn.hyqup.auth.component;
 
+import cn.hyqup.common.core.constant.SecurityConstants;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.assertj.core.util.Lists;
@@ -29,10 +30,10 @@ public class InitPermissionRoles implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-        redisTemplate.delete("auth:permission:roles");
+        redisTemplate.delete(SecurityConstants.PERMISSION_ROLES_KEY);
         Map<String, List<String>> permissionRoles = new TreeMap<>();
         List<String> roles = Lists.newArrayList("ROLE_admin");
         permissionRoles.put("*_/zephyr-auth/**", roles);
-        redisTemplate.opsForHash().putAll("auth:permission:roles", permissionRoles);
+        redisTemplate.opsForHash().putAll(SecurityConstants.PERMISSION_ROLES_KEY, permissionRoles);
     }
 }
