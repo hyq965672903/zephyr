@@ -29,13 +29,14 @@
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <java.version>1.8</java.version>
         <spring-cloud.version>Hoxton.SR8</spring-cloud.version>
-        <spring-cloud-alibaba.version>2.2.4.RELEASE</spring-cloud-alibaba.version>
+        <spring-cloud-alibaba.version>2.2.5.RELEASE</spring-cloud-alibaba.version>
         <lombok.version>1.18.12</lombok.version>
         <commons-collections4.version>4.4</commons-collections4.version>
         <commons-beanutils.version>1.9.4</commons-beanutils.version>
         <guava.version>30.1-jre</guava.version>
         <hutool.version>5.5.7</hutool.version>
         <mysql.version>8.0.19</mysql.version>
+        <mariadb.version>2.7.3</mariadb.version>
         <fastjson.version>1.2.75</fastjson.version>
         <zephyr.version>0.0.1-SNAPSHOT</zephyr.version>
     </properties>
