@@ -2,6 +2,7 @@ package cn.hyqup.auth.config;
 
 
 import cn.hyqup.auth.authentication.granter.MobilePwdGranter;
+import cn.hyqup.auth.exception.MyAuthExceptionEntryPoint;
 import cn.hyqup.auth.properties.base.SecurityProperties;
 import cn.hyqup.auth.service.ZephyrUserDetailsService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -60,6 +61,9 @@ public class AuthorizationServerConfigurer extends AuthorizationServerConfigurer
 
     @Autowired
     private AuthenticationManager authenticationManager;
+
+    @Autowired
+    private MyAuthExceptionEntryPoint myAuthExceptionEntryPoint;
 
     @Autowired
     DataSource dataSource;
@@ -137,12 +141,16 @@ public class AuthorizationServerConfigurer extends AuthorizationServerConfigurer
 
     /**
      * @param security
-     * @throws Exception
+     * @throws Exception tokenKeyAccess 对端点 /oauth/token_key 的访问权限,该端点用于获取加密密钥
+     *                   checkTokenAccess 对端点 /oauth/check_token 的访问权限，该端点用于检查 token 是否有效
      */
     @Override
     public void configure(AuthorizationServerSecurityConfigurer security) throws Exception {
 //        是否允许使用表单认证客户端模式，我这里保持统一都采用使用头部信息认证客户端，就不开启了
 //        security
 //                .allowFormAuthenticationForClients();AuthenticationSuccessEventListener
+        security.authenticationEntryPoint(myAuthExceptionEntryPoint)
+                .tokenKeyAccess("permitAll()")
+                .checkTokenAccess("permitAll()");
     }
 }

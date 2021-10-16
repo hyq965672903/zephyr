@@ -141,10 +141,9 @@ public class WebConfigurer implements WebMvcConfigurer {
 //        methodValidationPostProcessor.setValidator(validator());
 //        return methodValidationPostProcessor;
 //    }
-
     @Override
     public void extendHandlerExceptionResolvers(List<HandlerExceptionResolver> resolvers) {
-        resolvers.add(0, new AbstractHandlerExceptionResolver(){
+        resolvers.add(0, new AbstractHandlerExceptionResolver() {
             @Override
             protected ModelAndView doResolveException(HttpServletRequest httpServletRequest, HttpServletResponse response, Object o, Exception e) {
                 response.setContentType("application/json;charset=UTF-8");
@@ -155,14 +154,12 @@ public class WebConfigurer implements WebMvcConfigurer {
                     response.getWriter().print(json);
                     response.getWriter().flush();
                     response.getWriter().close();
-                }catch (IOException exception){
+                } catch (IOException exception) {
                     exception.printStackTrace();
                 }
                 return null;
             }
         });
+
     }
-
-
-
 }

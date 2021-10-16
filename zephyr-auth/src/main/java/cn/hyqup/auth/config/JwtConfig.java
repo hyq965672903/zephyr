@@ -7,10 +7,14 @@ import org.springframework.boot.autoconfigure.condition.ConditionalOnBean;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.core.io.ClassPathResource;
 import org.springframework.security.oauth2.provider.token.TokenEnhancer;
 import org.springframework.security.oauth2.provider.token.TokenStore;
 import org.springframework.security.oauth2.provider.token.store.JwtAccessTokenConverter;
 import org.springframework.security.oauth2.provider.token.store.JwtTokenStore;
+import org.springframework.security.oauth2.provider.token.store.KeyStoreKeyFactory;
+
+import java.security.KeyPair;
 
 /**
  * Copyright © 2021灼华. All rights reserved.
@@ -32,15 +36,24 @@ public class JwtConfig {
     }
 
     @Bean
-    public JwtAccessTokenConverter jwtAccessTokenConverter(){
+    public JwtAccessTokenConverter jwtAccessTokenConverter() {
         JwtAccessTokenConverter converter = new JwtAccessTokenConverter();
-        converter.setSigningKey(securityProperties.getOauth2().getJwtSigningKey());
+        converter.setKeyPair(keyPair());
         return converter;
     }
 
     @Bean
+    public KeyPair keyPair() {
+        KeyStoreKeyFactory factory = new KeyStoreKeyFactory(
+                new ClassPathResource("zephyr.jks"), "123456".toCharArray());
+        KeyPair keyPair = factory.getKeyPair(
+                "zephyr", "123456".toCharArray());
+        return keyPair;
+    }
+
+    @Bean
     @ConditionalOnBean(TokenEnhancer.class)
-    public TokenEnhancer jwtTokenEnhancer(){
+    public TokenEnhancer jwtTokenEnhancer() {
         return new JwtTokenEnhancer();
     }
 }

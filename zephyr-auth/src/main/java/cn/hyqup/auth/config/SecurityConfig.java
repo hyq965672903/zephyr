@@ -1,8 +1,8 @@
 package cn.hyqup.auth.config;
 
 import cn.hyqup.auth.authentication.mobilepwd.MobilePwdAuthenticationSecurityConfig;
-import cn.hyqup.auth.constant.SecurityConstants;
 import cn.hyqup.auth.properties.base.SecurityProperties;
+import cn.hyqup.common.core.constant.SecurityConstants;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;

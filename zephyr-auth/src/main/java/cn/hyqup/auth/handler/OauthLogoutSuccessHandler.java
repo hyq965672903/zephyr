@@ -1,4 +1,4 @@
-package cn.hyqup.auth.hanlder;
+package cn.hyqup.auth.handler;
 
 import cn.hutool.core.util.StrUtil;
 import cn.hyqup.common.core.result.Result;
@@ -39,7 +39,7 @@ public class OauthLogoutSuccessHandler implements LogoutSuccessHandler {
 			response.setCharacterEncoding("UTF-8");
 			response.setContentType(MediaType.APPLICATION_JSON_VALUE);
 			PrintWriter writer = response.getWriter();
-			String jsonStr = JSON.toJSONString(new Result().success("登出成功"));
+			String jsonStr = JSON.toJSONString(Result.success("登出成功"));
 			writer.write(jsonStr);
 			writer.flush();
 		}
