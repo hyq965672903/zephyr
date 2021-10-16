@@ -6,9 +6,11 @@ target/
 *.iml
 
 log
+logs
 *.log
 *.ctrl
 *.dat
-logs
+*.lck
 !**/nacos/target
 middleware/nacos/target/nacos-server.jar
+middleware/nacos/
