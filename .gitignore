@@ -12,5 +12,5 @@ logs
 *.dat
 *.lck
 !**/nacos/target
-zephyr-registry/nacos/target/nacos-server.jar
-zephyr-registry/nacos/
+middleware/nacos/target/nacos-server.jar
+middleware/nacos/
