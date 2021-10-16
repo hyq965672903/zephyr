@@ -1,6 +1,8 @@
 package cn.hyqup.common.web.config;
 
+import cn.hyqup.common.core.result.Result;
 import cn.hyqup.common.web.response.interceptor.ResponseResultInterceptor;
+import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.serializer.SerializerFeature;
 import com.alibaba.fastjson.support.config.FastJsonConfig;
 import com.alibaba.fastjson.support.spring.FastJsonHttpMessageConverter;
@@ -13,13 +15,19 @@ import org.springframework.http.MediaType;
 import org.springframework.http.converter.HttpMessageConverter;
 import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
 import org.springframework.validation.beanvalidation.MethodValidationPostProcessor;
+import org.springframework.web.servlet.HandlerExceptionResolver;
+import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+import org.springframework.web.servlet.handler.AbstractHandlerExceptionResolver;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.validation.Validation;
 import javax.validation.Validator;
 import javax.validation.ValidatorFactory;
+import java.io.IOException;
 import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
@@ -133,6 +141,25 @@ public class WebConfigurer implements WebMvcConfigurer {
 //        methodValidationPostProcessor.setValidator(validator());
 //        return methodValidationPostProcessor;
 //    }
+    @Override
+    public void extendHandlerExceptionResolvers(List<HandlerExceptionResolver> resolvers) {
+        resolvers.add(0, new AbstractHandlerExceptionResolver() {
+            @Override
+            protected ModelAndView doResolveException(HttpServletRequest httpServletRequest, HttpServletResponse response, Object o, Exception e) {
+                response.setContentType("application/json;charset=UTF-8");
+                response.setCharacterEncoding("UTF-8");
+                try {
+                    String json = JSON.toJSON(Result.fail("服务器异常")).toString();
 
+                    response.getWriter().print(json);
+                    response.getWriter().flush();
+                    response.getWriter().close();
+                } catch (IOException exception) {
+                    exception.printStackTrace();
+                }
+                return null;
+            }
+        });
 
+    }
 }

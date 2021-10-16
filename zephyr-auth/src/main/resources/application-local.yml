@@ -6,7 +6,7 @@ spring:
   cloud:
     nacos:
       discovery:
-        server-addr: http://1.14.68.75:8848
+        server-addr: http://localhost:8848
   redis:
     database: 0
     host: 118.24.169.98
@@ -14,9 +14,9 @@ spring:
     port: 6379
   datasource:
     driver-class-name: org.mariadb.jdbc.Driver
-    url: jdbc:mariadb://1.14.68.75:3306/zephyr_sys?autoReconnect=true&useSSL=false&characterEncoding=utf-8&serverTimezone=Asia/Shanghai
+    url: jdbc:mariadb://127.0.0.1:3306/zephyr_sys?autoReconnect=true&useSSL=false&characterEncoding=utf-8&serverTimezone=Asia/Shanghai
     username: root
-    password: qing187
+    password: root
 
 #配置相关
 zephyr:

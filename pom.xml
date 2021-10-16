@@ -35,7 +35,6 @@
         <commons-beanutils.version>1.9.4</commons-beanutils.version>
         <guava.version>30.1-jre</guava.version>
         <hutool.version>5.5.7</hutool.version>
-        <mysql.version>8.0.19</mysql.version>
         <fastjson.version>1.2.75</fastjson.version>
         <nimbusds.version>9.1.3</nimbusds.version>
         <zephyr.version>0.0.1-SNAPSHOT</zephyr.version>
